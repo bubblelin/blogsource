@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    
+<hibernate-mapping>
+	<class name="com.yanlin.oa.domain.Reply" table="oa_reply">
+		<id name="id">
+			<generator class="native"/>
+		</id>
+		<property name="ipAddress" />
+		<property name="content" />
+		<property name="postTime" />
+		<property name="deleted" length="32"/>
+		
+		<!-- 配置回复和用户多对一关系 -->
+		<many-to-one name="author" class="com.yanlin.oa.domain.User" column="userId"/>
+		
+		<!-- 配置回复和帖子多对一关系 -->
+		<many-to-one name="topic" class="com.yanlin.oa.domain.Topic" column="topicId"/>
+	</class>
+</hibernate-mapping>

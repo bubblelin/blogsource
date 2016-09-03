@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    
+<hibernate-mapping>
+	<class name="com.yanlin.oa.domain.Topic" table="oa_topic">
+		<id name="id">
+			<generator class="native"/>
+		</id>
+		<property name="title" length="128"/>
+		<property name="ipAddress"/>
+		<property name="type" />
+		<property name="content"/>
+		<property name="postTime" />
+		<property name="replyCount" />
+		<property name="lastUpdateTime" />
+		
+		<!-- 帖子和用户多对一关系 -->
+		<many-to-one name="author" class="com.yanlin.oa.domain.User" column="userId"/>
+		
+		<!-- 帖子和回复一对多的关系 -->
+		<set name="replies">
+			<key column="topicId"></key>
+			<one-to-many class="com.yanlin.oa.domain.Reply"/>
+		</set>
+		
+		<!-- 配置帖子和最后回复一对一关系 -->
+		<many-to-one name="lastReply" class="com.yanlin.oa.domain.Reply" column="replyId"/>
+		
+		<!-- 主题和板块多对一关系 -->
+		<many-to-one name="forum" class="com.yanlin.oa.domain.Forum" column="forumId"/>
+	</class>
+</hibernate-mapping>

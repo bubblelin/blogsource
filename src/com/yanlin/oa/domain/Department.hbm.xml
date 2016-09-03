@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    
+<hibernate-mapping>
+	<class name="com.yanlin.oa.domain.Department" table="oa_department">
+		<id name="id">
+			<generator class="native"/>
+		</id>
+		<property name="name" length="32"/>
+		<property name="description" length="128"/>
+		
+		<!-- 子部门和上级部门多对一的关系 -->
+		<many-to-one name="parent" class="com.yanlin.oa.domain.Department" column="parentId"/>
+		
+		<!-- 上级部门和子部门一对多的关系 -->
+		<set name="children" cascade="delete">
+			<key column="parentId"/>
+			<one-to-many class="com.yanlin.oa.domain.Department"/>
+		</set>
+		
+		<!-- 部门和用户一对多的关系 -->
+		<set name="users">
+			<key column="departmentId"/>
+			<one-to-many class="com.yanlin.oa.domain.User"/>
+		</set>
+	</class>
+</hibernate-mapping>
