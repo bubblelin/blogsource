@@ -9,9 +9,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.yanlin.oa.dao.IReplyDao;
 import com.yanlin.oa.domain.Forum;
+import com.yanlin.oa.domain.PageBean;
 import com.yanlin.oa.domain.Reply;
 import com.yanlin.oa.domain.Topic;
 import com.yanlin.oa.service.IReplyService;
+import com.yanlin.oa.utils.HQLHelper;
 
 /**
  * 回帖的service实现
@@ -42,4 +44,9 @@ public class ReplyServiceImpl implements IReplyService{
 	public List<Reply> getReplyByTopic(Topic model) {
 		return replyDao.getReplyByTopic(model);
 	}
+
+	public PageBean getPageBean(HQLHelper hql, int currentPage) {
+		return replyDao.getPageBean(hql, currentPage);
+	}
+
 }

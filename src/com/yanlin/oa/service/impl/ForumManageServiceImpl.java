@@ -9,7 +9,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.yanlin.oa.dao.IForumManageDao;
 import com.yanlin.oa.domain.Forum;
+import com.yanlin.oa.domain.PageBean;
 import com.yanlin.oa.service.IForumManageService;
+import com.yanlin.oa.utils.HQLHelper;
 /**
  * 板块管理的service
  * @author bubblelin
@@ -48,5 +50,9 @@ public class ForumManageServiceImpl implements IForumManageService{
 
 	public void moveDown(Long id) {
 		forumManageDao.moveDown(id);
+	}
+
+	public PageBean getPageBean(HQLHelper hql, int currentPage) {
+		return  forumManageDao.getPageBean(hql, currentPage);
 	}
 }

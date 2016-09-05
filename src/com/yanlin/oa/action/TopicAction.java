@@ -1,17 +1,16 @@
 package com.yanlin.oa.action;
 
 import java.util.Date;
-import java.util.List;
 
-import org.apache.struts2.ServletActionContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import com.yanlin.oa.base.BaseAction;
 import com.yanlin.oa.domain.Forum;
+import com.yanlin.oa.domain.PageBean;
 import com.yanlin.oa.domain.Reply;
 import com.yanlin.oa.domain.Topic;
-import com.yanlin.oa.domain.User;
+import com.yanlin.oa.utils.HQLHelper;
 
 /**
  * 帖子的Action
@@ -25,6 +24,7 @@ public class TopicAction extends BaseAction<Topic>{
 	private static final long serialVersionUID = 1L;
 	//属性驱动，获取板块的id
 	private Long forumId;
+	
 	/**
 	 * 跳转到发布新贴的页面
 	 */
@@ -61,9 +61,12 @@ public class TopicAction extends BaseAction<Topic>{
 		Topic topic = topicService.getById(model.getId());
 		this.getValueStack().push(topic);
 		
-		//根据帖子查询其回复内容
-		List<Reply> replyList = replyService.getReplyByTopic(model);
-		this.getValueStack().set("replyList", replyList);
+		HQLHelper hql = new HQLHelper(Reply.class);
+		hql.addWhere("o.topic=?", model);
+		hql.addOrderBy("o.postTime", true);
+		PageBean pb = replyService.getPageBean(hql, currentPage);
+		
+		this.getValueStack().push(pb);
 		return "topicShow";
 	}
 	
@@ -87,5 +90,5 @@ public class TopicAction extends BaseAction<Topic>{
 	public void setForumId(Long forumId) {
 		this.forumId = forumId;
 	}
-	
+
 }

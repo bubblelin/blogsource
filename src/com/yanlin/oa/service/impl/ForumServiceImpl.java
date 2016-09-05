@@ -9,7 +9,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.yanlin.oa.dao.IForumDao;
 import com.yanlin.oa.domain.Forum;
+import com.yanlin.oa.domain.PageBean;
 import com.yanlin.oa.service.IForumService;
+import com.yanlin.oa.utils.HQLHelper;
 
 /**
  * 参与板块操作的service实现类
@@ -30,4 +32,9 @@ public class ForumServiceImpl implements IForumService{
 	public Forum getById(Long id) {
 		return forumDao.getById(id);
 	}
+
+	public PageBean getPageBean(HQLHelper hql, int currentPage) {
+		return forumDao.getPageBean(hql, currentPage);
+	}
+
 }

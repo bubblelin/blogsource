@@ -8,8 +8,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.yanlin.oa.dao.IUserDao;
+import com.yanlin.oa.domain.PageBean;
 import com.yanlin.oa.domain.User;
 import com.yanlin.oa.service.IUserService;
+import com.yanlin.oa.utils.HQLHelper;
 import com.yanlin.oa.utils.MD5Utils;
 /**
  * 用户的service实现类
@@ -51,5 +53,9 @@ public class UserServiceImpl implements IUserService {
 
 	public User login(User model) {
 		return userDao.login(model);
+	}
+
+	public PageBean getPageBean(HQLHelper hql, int currentPage) {
+		return userDao.getPageBean(hql, currentPage);
 	}
 }

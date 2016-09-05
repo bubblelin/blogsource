@@ -2,6 +2,9 @@ package com.yanlin.oa.base;
 
 import java.util.List;
 
+import com.yanlin.oa.domain.PageBean;
+import com.yanlin.oa.utils.HQLHelper;
+
 /**
  * 通用的dao
  * @author bubblelin
@@ -38,4 +41,9 @@ public interface IBaseDao<T> {
 	 * 查询所有
 	 */
 	List<T> findAll();
+	
+	/**
+	 * 公共分页
+	 */
+	PageBean getPageBean(HQLHelper hql,int currentPage);
 }

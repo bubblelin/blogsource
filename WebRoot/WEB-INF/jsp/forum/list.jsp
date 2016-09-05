@@ -35,7 +35,7 @@
 				<!--版面列表-->
 				<tbody class="dataContainer" datakey="forumList">
 				
-				<s:iterator value="forumAll">
+				<s:iterator value="listData">
 					<tr height="78" align="center" class="template">
 						<td width="3"></td>
 						<td width="75" class="ForumPageTableDataLine">
@@ -70,5 +70,11 @@
 		</div>
 	</center>
 </div>
+<!-- 分页信息 -->
+<%@ include file="/WEB-INF/jsp/public/pageview.jsp" %>
+<!-- 分页需要的表单 -->
+<s:form id="pageForm" action="forum_list" namespace="/">
+
+</s:form>
 </body>
 </html>

@@ -1,14 +1,21 @@
 package com.yanlin.oa.base;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.Reader;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.List;
+import java.util.Properties;
 
 import javax.annotation.Resource;
 
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.hibernate.classic.Session;
+
+import com.yanlin.oa.domain.PageBean;
+import com.yanlin.oa.utils.HQLHelper;
 
 /*
  * ͨ通用的dao实现类
@@ -68,5 +75,65 @@ public class BaseDaoImpl<T> implements IBaseDao<T>{
 	 */
 	protected Session getSession() {
 		return sessionFactory.getCurrentSession();
+	}
+
+	/**
+	 * 公共分页
+	 */
+	public PageBean getPageBean(HQLHelper hql, int currentPage) {
+		int pageSize = this.getPageSize();
+		int firstResult = (currentPage - 1)*pageSize;
+		String listHQL = hql.getListHQL();
+		String countHQL = hql.getCountHQL();
+		List<Object> args = hql.getArgs();
+		//1.通过分页查询获取当前页的结果集
+		Query query = this.getSession().createQuery(listHQL);
+		if(args != null && args.size()>0){
+			int index = 0;
+			for(Object o : args){
+				query.setParameter(index++, o);
+			}
+		}
+		query.setFirstResult(firstResult);
+		query.setMaxResults(pageSize);
+		List listData = query.list();
+		//2.获取总记录数
+		query = this.getSession().createQuery(countHQL);
+		if(args != null && args.size()>0){
+			int index = 0;
+			for(Object o : args){
+				query.setParameter(index++, o);
+			}
+			
+		}
+		Long totalSize = (Long) query.uniqueResult();
+		return new PageBean(currentPage, pageSize, listData, totalSize.intValue());
+	}
+
+	/**
+	 * 获取配置文件的pageSize
+	 * @return
+	 */
+	private int getPageSize() {
+		int pageSize = 10;
+		Properties p = new Properties();
+		InputStream in = Thread.currentThread().getContextClassLoader().getResourceAsStream("page.properties");
+		try {
+			p.load(in);
+			String str = (String)p.get("pageSize");
+			pageSize = Integer.parseInt(str);
+		} catch (IOException e) {
+			pageSize = 10;
+			e.printStackTrace();
+		} finally {
+			try {
+				if(in != null){
+					in.close();
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		return pageSize;
 	}
 }

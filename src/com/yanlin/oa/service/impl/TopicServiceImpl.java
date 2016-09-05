@@ -9,8 +9,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.yanlin.oa.dao.ITopicDao;
 import com.yanlin.oa.domain.Forum;
+import com.yanlin.oa.domain.PageBean;
 import com.yanlin.oa.domain.Topic;
 import com.yanlin.oa.service.ITopicService;
+import com.yanlin.oa.utils.HQLHelper;
 /**
  * 帖子的service实现
  * @author bubblelin
@@ -39,6 +41,10 @@ public class TopicServiceImpl implements ITopicService{
 
 	public Topic getById(Long id) {
 		return topicDao.getById(id);
+	}
+
+	public PageBean getPageBean(HQLHelper hql, int currentPage) {
+		return topicDao.getPageBean(hql, currentPage);
 	}
 
 }
