@@ -1,7 +1,6 @@
 package com.yanlin.oa.service;
 
 import java.util.List;
-import java.util.Set;
 
 import com.yanlin.oa.domain.Role;
 

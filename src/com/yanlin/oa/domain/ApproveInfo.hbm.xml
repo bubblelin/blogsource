@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    
+<hibernate-mapping>
+	<class name="com.yanlin.oa.domain.ApproveInfo" table="oa_approveInfo">
+		<id name="id">
+			<generator class="native"/>
+		</id>
+		<property name="approval"/>
+		<property name="approveTime"/>
+		<property name="comment"/>
+
+	<!-- 审批和审批人（用户）多对一的关系 -->
+	<many-to-one name="approver" class="com.yanlin.oa.domain.User" column="userId"/>
+	
+	<!-- 审批和申请多对一的关系 -->
+	<many-to-one name="application" class="com.yanlin.oa.domain.Application" column="applicationId"/>
+
+	</class>
+</hibernate-mapping>

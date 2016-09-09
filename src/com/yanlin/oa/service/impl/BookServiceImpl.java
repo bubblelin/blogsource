@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.jbpm.api.ProcessEngine;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,14 +18,17 @@ public class BookServiceImpl implements IBookService {
 	@Resource
 	private IBookDao bookDao;
 	
+	@Resource
+	private ProcessEngine processEngine;
+	
 	@Override
 	public void save(Book book) {
-		
 		bookDao.save(book);
 	}
 
 	@Override
 	public void delete(Long id) {
+		System.out.println(processEngine);
 		
 		bookDao.delete(id);
 	}

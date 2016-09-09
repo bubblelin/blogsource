@@ -2,12 +2,10 @@ package com.yanlin.oa.dao.impl;
 
 import java.util.List;
 
-import org.hibernate.Query;
 import org.springframework.stereotype.Repository;
 
 import com.yanlin.oa.base.BaseDaoImpl;
 import com.yanlin.oa.dao.IReplyDao;
-import com.yanlin.oa.domain.PageBean;
 import com.yanlin.oa.domain.Reply;
 import com.yanlin.oa.domain.Topic;
 

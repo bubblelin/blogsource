@@ -1,7 +1,5 @@
 package com.yanlin.oa.action;
 
-import java.util.List;
-
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 

@@ -1,10 +1,16 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
     <title>Top</title>
     <%@include file="/WEB-INF/jsp/public/header.jsp" %>
 	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/style/blue/top.css" />
+	<!-- <script>
+		function goBlog(){
+			var url = "https://bubblelin.github.io/";
+    		window.showModalDialog(url);
+		}
+	</script> -->
 </head>
 
 <body class="PageBody" style="margin: 0">
@@ -70,9 +76,9 @@
         </div>
         
 		<div id="Head2_FunctionList">
-			<marquee style="WIDTH: 100%;" onMouseOver="this.stop()" onMouseOut="this.start()" 
+			<marquee style="WIDTH: 100%；" onMouseOver="this.stop()" onMouseOut="this.start()" 
 				scrollamount=1 scrolldelay=30 direction=left>
-				<b>这是滚动的消息</b>
+				<b>端午节放假，点击阅读</b>
 			</marquee>
 		</div>
 	</div>

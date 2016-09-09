@@ -10,7 +10,7 @@ import com.yanlin.oa.domain.Book;
 import com.yanlin.oa.service.IBookService;
 
 /**
- * ²âÊÔBaseDao
+ * ï¿½ï¿½ï¿½ï¿½BaseDao
  * @author bubblelin
  *
  */
@@ -18,12 +18,12 @@ import com.yanlin.oa.service.IBookService;
 public class TestBaseDao {
 	
 	/**
-	 * ²âÊÔfindAll()²éÑ¯ËùÓÐµÄ·½·¨
+	 * ï¿½ï¿½ï¿½ï¿½findAll()ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ÐµÄ·ï¿½ï¿½ï¿½
 	 * @throws Exception
 	 */
 	@Test
 	public void testFindAll() throws Exception {
-		//³õÊ¼»¯spring
+		//ï¿½ï¿½Ê¼ï¿½ï¿½spring
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("beans.xml");
 		IBookService bookService = (IBookService)ctx.getBean("bookServiceImpl");
 		
@@ -32,12 +32,12 @@ public class TestBaseDao {
 	}
 	
 	/**
-	 * ²âÊÔ¸ù¾Ýids²éÑ¯µÄ·½·¨
+	 * ï¿½ï¿½ï¿½Ô¸ï¿½ï¿½idsï¿½ï¿½Ñ¯ï¿½Ä·ï¿½ï¿½ï¿½
 	 * @throws Exception
 	 */
 	@Test
 	public void testGetByIds() throws Exception {
-		//³õÊ¼»¯spring
+		//ï¿½ï¿½Ê¼ï¿½ï¿½spring
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("beans.xml");
 		IBookService bookService = (IBookService)ctx.getBean("bookServiceImpl");
 		
@@ -47,12 +47,12 @@ public class TestBaseDao {
 	}
 	
 	/**
-	 * ²âÊÔ¸ù¾Ýid²éÑ¯µÄ·½·¨
+	 * ï¿½ï¿½ï¿½Ô¸ï¿½ï¿½idï¿½ï¿½Ñ¯ï¿½Ä·ï¿½ï¿½ï¿½
 	 * @throws Exception
 	 */
 	@Test
 	public void testGetById() throws Exception {
-		//³õÊ¼»¯spring
+		//ï¿½ï¿½Ê¼ï¿½ï¿½spring
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("beans.xml");
 		IBookService bookService = (IBookService)ctx.getBean("bookServiceImpl");
 		
@@ -61,12 +61,12 @@ public class TestBaseDao {
 	}
 	
 	/**
-	 * ²âÊÔÐÞ¸ÄµÄ·½·¨
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½Þ¸ÄµÄ·ï¿½ï¿½ï¿½
 	 * @throws Exception
 	 */
 	@Test
 	public void testUpdate() throws Exception {
-		//³õÊ¼»¯spring
+		//ï¿½ï¿½Ê¼ï¿½ï¿½spring
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("beans.xml");
 		IBookService bookService = (IBookService)ctx.getBean("bookServiceImpl");
 		
@@ -77,12 +77,12 @@ public class TestBaseDao {
 	}
 	
 	/**
-	 * ²âÊÔÉ¾³ýµÄ·½·¨
+	 * ï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½Ä·ï¿½ï¿½ï¿½
 	 * @throws Exception
 	 */
 	@Test
 	public void testDelete() throws Exception {
-		//³õÊ¼»¯spring
+		//ï¿½ï¿½Ê¼ï¿½ï¿½spring
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("beans.xml");
 		IBookService bookService = (IBookService)ctx.getBean("bookServiceImpl");
 		
@@ -90,17 +90,17 @@ public class TestBaseDao {
 	}
 
 	/**
-	 * ²âÊÔÌí¼ÓµÄ·½·¨
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÓµÄ·ï¿½ï¿½ï¿½
 	 * @throws Exception
 	 */
 	@Test
 	public void testSave() throws Exception {
-		//³õÊ¼»¯spring
+		//ï¿½ï¿½Ê¼ï¿½ï¿½spring
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("beans.xml");
 		IBookService bookService = (IBookService)ctx.getBean("bookServiceImpl");
 		
 		Book book = new Book();
-		book.setName("java");
+		book.setName("zhangsan");
 		
 		bookService.save(book);
 	}

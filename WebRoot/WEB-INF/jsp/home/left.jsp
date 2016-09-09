@@ -15,7 +15,7 @@
 			<!-- 通过OGNL表达式调用对象的方法 -->
 			<s:if test="#session.loginUser.hasPrivilegeByName(name)">
 		        <li class="level1">
-		            <div onClick="menuClick(this);" class="level1Style">
+		            <div onClick="menuClick(this);" class="level1Style" style="cursor: pointer;">
 		            	<img src="${pageContext.request.contextPath}/style/images/MenuIcon/top_${id}.gif" class="Icon" />${name}
 		            </div>
 		            <ul style="display: none;" class="MenuLevel2">

@@ -17,8 +17,10 @@ import com.yanlin.oa.service.IDepartmentService;
 import com.yanlin.oa.service.IForumManageService;
 import com.yanlin.oa.service.IForumService;
 import com.yanlin.oa.service.IPrivilegeService;
+import com.yanlin.oa.service.IProcessDefinitionService;
 import com.yanlin.oa.service.IReplyService;
 import com.yanlin.oa.service.IRoleService;
+import com.yanlin.oa.service.ITemplateService;
 import com.yanlin.oa.service.ITopicService;
 import com.yanlin.oa.service.IUserService;
 
@@ -98,4 +100,8 @@ public class BaseAction<T> extends ActionSupport implements ModelDriven<T>{
 	protected ITopicService topicService;
 	@Resource
 	protected IReplyService replyService;
+	@Resource
+	protected IProcessDefinitionService processDefinitionService;
+	@Resource
+	protected ITemplateService templateService;
 }

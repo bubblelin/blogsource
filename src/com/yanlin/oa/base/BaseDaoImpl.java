@@ -2,7 +2,6 @@ package com.yanlin.oa.base;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.Reader;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.List;
@@ -58,7 +57,7 @@ public class BaseDaoImpl<T> implements IBaseDao<T>{
 
 	@Override
 	public List<T> getByIds(Long[] ids) {
-		String hql = "FROM " + clazz.getSimpleName() + " WHERE id in (:ids)";
+		String hql = " FROM " + clazz.getSimpleName() + " WHERE id in (:ids)";
 		Query query = getSession().createQuery(hql);
 		query.setParameterList("ids", ids);
 		return query.list();

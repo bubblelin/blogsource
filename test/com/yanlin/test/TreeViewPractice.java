@@ -1,7 +1,5 @@
 package com.yanlin.test;
 
-import static org.junit.Assert.*;
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedHashSet;
@@ -15,36 +13,36 @@ import com.yanlin.oa.domain.Department;
 
 public class TreeViewPractice{
 	/**
-	 * ½á¹¹ÈçÏÂ£º
+	 * ï¿½á¹¹ï¿½ï¿½ï¿½Â£ï¿½
 	 * <pre>
-	 * ©ÇÊÐ³¡²¿
-	 *    ©ÇÐû´«²¿
-	 *    ©ÇÒµÎñ²¿
-	 *       ©ÇÒµÎñÒ»²¿
-	 *       ©ÇÒµÎñ¶þ²¿
-	 * ©Ç¿ª·¢²¿
-	 *    ©Ç¿ª·¢Ò»²¿
-	 *    ©Ç¿ª·¢¶þ²¿
+	 * ï¿½ï¿½ï¿½Ð³ï¿½ï¿½ï¿½
+	 *    ï¿½ï¿½ï¿½ï¿½
+	 *    ï¿½ï¿½Òµï¿½ï¿½
+	 *       ï¿½ï¿½Òµï¿½ï¿½Ò»ï¿½ï¿½
+	 *       ï¿½ï¿½Òµï¿½ï¿½ï¿½ï¿½ï¿½
+	 * ï¿½Ç¿ï¿½ï¿½ï¿½ï¿½ï¿½
+	 *    ï¿½Ç¿ï¿½ï¿½ï¿½Ò»ï¿½ï¿½
+	 *    ï¿½Ç¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 * </pre>
-	 * @return ËùÓÐ×î¶¥²ãµÄ²¿ÃÅÁÐ±í
+	 * @return ï¿½ï¿½ï¿½ï¿½ï¿½î¶¥ï¿½ï¿½Ä²ï¿½ï¿½ï¿½ï¿½Ð±ï¿½
 	 */
 	public static List<Department> findTopListDepartmentList(){
 		
 		Department dept_1_1 = new Department();
 		dept_1_1.setId(new Long(11));
-		dept_1_1.setName("Ðû´«²¿");
+		dept_1_1.setName("ï¿½ï¿½");
 		
 		Department dept_1_2 = new Department();
 		dept_1_2.setId(new Long(12));
-		dept_1_2.setName("ÒµÎñ²¿");
+		dept_1_2.setName("Òµï¿½ï¿½");
 		
 		Department dept_1_2_1 = new Department();
 		dept_1_2_1.setId(new Long(121));
-		dept_1_2_1.setName("ÒµÎñÒ»²¿");
+		dept_1_2_1.setName("Òµï¿½ï¿½Ò»ï¿½ï¿½");
 		
 		Department dept_1_2_2 = new Department();
 		dept_1_2_2.setId(new Long(122));
-		dept_1_2_2.setName("ÒµÎñ¶þ²¿");
+		dept_1_2_2.setName("Òµï¿½ï¿½ï¿½ï¿½ï¿½");
 		
 		dept_1_2_1.setParent(dept_1_2);
 		dept_1_2_2.setParent(dept_1_2);
@@ -57,7 +55,7 @@ public class TreeViewPractice{
 		
 		Department dept_1 = new Department();
 		dept_1.setId(new Long(1));
-		dept_1.setName("ÊÐ³¡²¿");
+		dept_1.setName("ï¿½Ð³ï¿½ï¿½ï¿½");
 		
 		dept_1_1.setParent(dept_1);
 		dept_1_2.setParent(dept_1);
@@ -70,15 +68,15 @@ public class TreeViewPractice{
 		
 		Department dept_2_1 = new Department();
 		dept_2_1.setId(new Long(21));
-		dept_2_1.setName("¿ª·¢Ò»²¿");
+		dept_2_1.setName("ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½");
 		
 		Department dept_2_2 = new Department();
 		dept_2_2.setId(new Long(22));
-		dept_2_2.setName("¿ª·¢¶þ²¿");
+		dept_2_2.setName("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 		
 		Department dept_2 = new Department();
 		dept_2.setId(new Long(2));
-		dept_2.setName("¿ª·¢²¿");
+		dept_2.setName("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 		
 		dept_2_1.setParent(dept_2);
 		dept_2_2.setParent(dept_2);
@@ -98,7 +96,7 @@ public class TreeViewPractice{
 
 
 	/**
-	 * ÁÐ³öËùÓÐ²¿ÃÅµÄ·½Ê½¶þ£º±éÀú¼¯ºÏ
+	 * ï¿½Ð³ï¿½ï¿½ï¿½ï¿½Ð²ï¿½ï¿½ÅµÄ·ï¿½Ê½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 * @param d
 	 */
 	@Test
@@ -108,7 +106,7 @@ public class TreeViewPractice{
 	}
 	public void showTree(Collection<Department> list,String blank) {
 		for(Department d : list){
-			System.out.println(blank+"©Ç"+d.getName());
+			System.out.println(blank+"ï¿½ï¿½"+d.getName());
 			Set<Department> children = d.getChildren();
 			showTree(children,"--" + blank);
 		}

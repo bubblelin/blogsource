@@ -21,7 +21,7 @@ public class CheckPrivilegeInterceptor extends AbstractInterceptor{
 	 */
 	@SuppressWarnings("unchecked")
 	public String intercept(ActionInvocation ai) throws Exception {
-		System.out.println("ִ拦截器已经执行--------------------");
+		System.out.println("拦截器已经执行--------------------");
 		User loginUser = (User)ServletActionContext.getRequest().getSession().getAttribute("loginUser");
 		String url = ai.getProxy().getNamespace() + ai.getProxy().getActionName();
 		System.out.println("url:"+url);

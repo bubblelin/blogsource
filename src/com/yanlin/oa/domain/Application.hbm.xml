@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    
+<hibernate-mapping>
+	<class name="com.yanlin.oa.domain.Application" table="oa_application">
+		<id name="id">
+			<generator class="native"/>
+		</id>
+		<property name="title"/>
+		<property name="status"/>
+		<property name="applyTime"/>
+		<property name="filePath"/>
+	<!-- 申请和申请人（用户）多对一的关系 -->
+	<many-to-one name="applicant" class="com.yanlin.oa.domain.User" column="userId"/>
+	
+	<!-- 申请和模板多对一的关系 -->
+	<many-to-one name="template" class="com.yanlin.oa.domain.Template" column="templateId"/>
+	
+	<!-- 申请和审批一对多的关系 -->
+	<set name="approveInfos">
+		<key column="applicationId"/>
+		<one-to-many class="com.yanlin.oa.domain.ApproveInfo" />
+	</set>
+	</class>
+</hibernate-mapping>
