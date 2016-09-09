@@ -150,6 +150,12 @@
 				<param name="spacename"></param>
 			</result>
 			<result name="historyApproveList">/WEB-INF/jsp/flow/historyApproveList.jsp</result>
+			<result name="myTaskList">/WEB-INF/jsp/flow/myTaskList.jsp</result>
+			<result name="approveUI">/WEB-INF/jsp/flow/approve.jsp</result>
+			<result name="toMyTaskList" type="redirectAction">
+				<param name="actionName">flow_myTaskList</param>
+				<param name="spacename">/</param>
+			</result>
 		</action>
 	</package>
 	

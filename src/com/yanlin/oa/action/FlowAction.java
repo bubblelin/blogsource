@@ -20,6 +20,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.yanlin.oa.domain.Application;
 import com.yanlin.oa.domain.ApproveInfo;
 import com.yanlin.oa.domain.PageBean;
+import com.yanlin.oa.domain.TaskView;
 import com.yanlin.oa.domain.Template;
 import com.yanlin.oa.domain.User;
 import com.yanlin.oa.service.IApplicationService;
@@ -45,14 +46,16 @@ public class FlowAction extends ActionSupport{
 	@Resource
 	private IApproveInfoService approveInfoService;
 	
-	private Long templateId;//属性驱动，
+	private Long templateId;//属性驱动，模板的id
 	private File resource;//用于文件上传
 	private int currentPage = 1;//分页查询
 	private String status;//分页条件
 	private InputStream inputStreamName;//Y用于文件上传
-	private Long applicationId;
+	private Long applicationId;//申请的id
 	private String fileName;
-	
+	private String taskId;//属性驱动，任务的id
+	private boolean approval;//属性驱动，审批的意见
+	private String comment;//属性驱动，审批的信息
 	
 	/**
 	 * 起草申请列表(显示所有模板)
@@ -149,7 +152,8 @@ public class FlowAction extends ActionSupport{
 	 * 待我审批（我的任务列表）
 	 */
 	public String myTaskList(){
-
+		List<TaskView> taskViewList = flowService.findTaskList(this.getLoginUser());
+		ActionContext.getContext().getValueStack().set("taskViewList", taskViewList);
 		return "myTaskList";
 	}
 	
@@ -157,7 +161,6 @@ public class FlowAction extends ActionSupport{
 	 * 跳转到审批页面
 	 */
 	public String approveUI(){
-		
 		return "approveUI";
 	}
 	
@@ -165,6 +168,16 @@ public class FlowAction extends ActionSupport{
 	 * 审批处理
 	 */
 	public String approve(){
+		//保存一个新的审批信息
+		ApproveInfo appr = new ApproveInfo();
+		Application application = applicationService.getById(applicationId);
+		appr.setApplication(application );
+		appr.setApproval(approval);
+		appr.setApprover(this.getLoginUser());
+		appr.setApproveTime(new Date());
+		appr.setComment(comment);
+		flowService.approve(appr,taskId);
+		
 		return "toMyTaskList";
 	}
 
@@ -237,10 +250,26 @@ public class FlowAction extends ActionSupport{
 	public void setApplicationId(Long applicationId) {
 		this.applicationId = applicationId;
 	}
+	public Long getApplicationId() {
+		return applicationId;
+	}
 	public InputStream getInputStreamName() {
 		return inputStreamName;
 	}
 	public String getFileName() {
 		return fileName;
 	}
+	public void setTaskId(String taskId) {
+		this.taskId = taskId;
+	}
+	public String getTaskId() {
+		return taskId;
+	}
+	public void setApproval(boolean approval) {
+		this.approval = approval;
+	}
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
+	
 }

@@ -29,3 +29,4 @@ Windows7/10、MyEclipse2014、MySQL5.5、Tomcat7、IE、Firefox
 2. 论坛模块：forumManage/forum/topic/reply
 3. 审批流转: template/process/flow
 4. 系统权限: privilege
+![Alt text](http://ww1.sinaimg.cn/mw690/0062aWY4gw1f7n3ta8e23j30rr0jggwx.jpg)

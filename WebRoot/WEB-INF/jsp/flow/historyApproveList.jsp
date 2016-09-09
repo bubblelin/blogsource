@@ -33,7 +33,7 @@
 	        <!--显示数据列表-->
 		<s:iterator value="historyApproveList">
 			<tr class="TableDetail1 template">
-				<td>${approver}&nbsp;</td>
+				<td>${approver.name}&nbsp;</td>
 				<td><s:date name="approveTime" format="yyyy-MM-dd"/>&nbsp;</td>
 				<td><s:property value="approval ? '同意':'不同意'"/>&nbsp;</td>
 				<td>${comment}&nbsp;</td>

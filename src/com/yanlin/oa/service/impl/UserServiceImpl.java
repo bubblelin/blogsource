@@ -34,7 +34,7 @@ public class UserServiceImpl implements IUserService {
 	}
 
 	public void save(User model) {
-		//�½��û�����Ĭ������
+		//默认初始化密码1234
 		model.setPassword(MD5Utils.md5("1234"));
 		userDao.save(model);
 	}
